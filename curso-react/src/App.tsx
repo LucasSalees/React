@@ -1,36 +1,27 @@
-interface IcardProps {
-  title: string;
-  children: React.ReactNode;
-}
-
-const Card = (props: IcardProps) => {
-  return (
-    <div style={{ border: '1px solid black', padding: '10px' }}>
-      <span>
-        title: {props.title}
-      </span>
-
-      <div>
-        {props.children}
-      </div>
-
-      <div>
-        footer
-      </div>
-    </div>
-  )
-}
+import { useState } from "react"
 
 export function App() {
-  
+  const [list, setList] = useState([
+    {id: 1, label: 'item 1'},
+    {id: 2, label: 'item 2'},
+    {id: 3, label: 'item 3'},
+    {id: 4, label: 'item 4'},
+  ]); 
+
   return (
     <div>
+      
+      <input/>
 
-      <p>Card: </p>
+      <button>
+        adicionar
+      </button>
 
-      <Card title='teste'>
-        Abacate
-      </Card>
+      <ol>
+        {list.map(listItem => (
+          <li key={listItem.id}>{listItem.label}</li>
+        ))}
+      </ol>
 
     </div>
   )
